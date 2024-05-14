@@ -6,11 +6,13 @@ part 'investigator.g.dart';
 class Investigator {
   final String name;
   final String occupation;
+  final String addon;
   final String wikiUrl;
 
   Investigator(
     this.name,
     this.occupation,
+    this.addon,
     this.wikiUrl,
   );
 

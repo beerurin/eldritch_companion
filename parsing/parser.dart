@@ -45,12 +45,15 @@ Future<List<Investigator>> parseInvestigators(String content) async {
       // Assuming investigator name is in the first cell
       final nameCell = cells[0];
       final name = nameCell.text.trim();
-      final occupation = cells[1].text.trim();
-
       // Extract URL from the first anchor tag within the name cell (assuming the URL is present there)
       final wikiUrl = nameCell.querySelector('a')?.attributes['href'];
 
-      investigators.add(Investigator(name, occupation, wikiUrl ?? ''));
+      final occupation = cells[1].text.trim();
+
+      final addon = cells[2].querySelector('a')?.attributes['title'];
+
+      investigators.add(Investigator(
+          name, occupation, addon ?? 'Unknown addon', wikiUrl ?? ''));
     }
   }
 
