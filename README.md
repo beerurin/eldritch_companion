@@ -23,3 +23,4 @@ Before building the app run `dart run build_runner build`.
 
 To get latest data from the wiki for the application to use
 run `dart parser.dart` in the `parsing` directory.
+Without this data app **will not be functional**!
