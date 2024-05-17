@@ -10,7 +10,7 @@ automatically. */
 // ignore_for_file: avoid_print
 import 'dart:io';
 import 'dart:convert';
-import 'package:eldritch_companion/constants.dart';
+import 'package:eldritch_companion/common/constants.dart';
 import 'constants.dart';
 import 'package:eldritch_companion/investigator.dart';
 import 'package:html/parser.dart' as parser;

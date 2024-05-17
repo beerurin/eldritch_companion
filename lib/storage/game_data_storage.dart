@@ -5,7 +5,7 @@ Full notice can be found at /lib/main.dart file. */
 
 import 'dart:io';
 import 'dart:convert';
-import 'package:eldritch_companion/constants.dart';
+import 'package:eldritch_companion/common/constants.dart';
 import 'package:eldritch_companion/investigator.dart';
 
 class GameDataStorage {

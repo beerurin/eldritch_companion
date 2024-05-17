@@ -14,7 +14,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>. */
 
-import 'package:eldritch_companion/constants.dart';
+import 'package:eldritch_companion/common/constants.dart';
+import 'package:eldritch_companion/common/theme.dart';
 import 'package:eldritch_companion/pages/randomiser/investigator_randomiser.dart';
 import 'package:eldritch_companion/pages/randomiser/random_cards_page.dart';
 import 'package:eldritch_companion/storage/game_data_storage.dart';
@@ -49,10 +50,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: appName,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: appTheme,
       home: const MainPage(title: 'Home Page'),
     );
   }
@@ -73,6 +71,7 @@ class _MainPageState extends State<MainPage> {
     return MultiProvider(
         providers: [Provider(create: (context) => GameDataStorage())],
         child: MaterialApp.router(
+          theme: appTheme,
           routerConfig: router(),
         ));
   }

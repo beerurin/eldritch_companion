@@ -31,7 +31,9 @@ class _InvestigatorRandomiserState extends State<InvestigatorRandomiser> {
             : Text(investigatorsToShow[0].name),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.autorenew),
-          onPressed: () {},
+          onPressed: () {
+            setState(() {});
+          },
         ));
   }
 }
