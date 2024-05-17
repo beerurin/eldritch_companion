@@ -1,0 +1,3 @@
+class GameDataFilter {
+  String? gameSet;
+}

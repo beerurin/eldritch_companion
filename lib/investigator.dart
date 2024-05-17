@@ -1,3 +1,8 @@
+/* Eldritch Companion, an assitant app for Eldritch Horror
+Copyright (C) 2024 Roman Zubin
+
+Full notice can be found at /lib/main.dart file. */
+
 import 'package:json_annotation/json_annotation.dart';
 
 part 'investigator.g.dart';
@@ -6,13 +11,13 @@ part 'investigator.g.dart';
 class Investigator {
   final String name;
   final String occupation;
-  final String addon;
+  final String gameSet;
   final String wikiUrl;
 
   Investigator(
     this.name,
     this.occupation,
-    this.addon,
+    this.gameSet,
     this.wikiUrl,
   );
 

@@ -1,11 +1,13 @@
-/*
+/* Eldritch Companion, an assitant app for Eldritch Horror
+Copyright (C) 2024 Roman Zubin
+
+Full notice can be found at /lib/main.dart file. 
+
 In order for app to work, data must be parsed using this code.
 Just run in terminal with 'dart parser.dart' and it will do all the magic 
-automatically.
-*/
+automatically. */
 
 // ignore_for_file: avoid_print
-
 import 'dart:io';
 import 'dart:convert';
 import 'package:eldritch_companion/constants.dart';
@@ -50,10 +52,10 @@ Future<List<Investigator>> parseInvestigators(String content) async {
 
       final occupation = cells[1].text.trim();
 
-      final addon = cells[2].querySelector('a')?.attributes['title'];
+      final gameSet = cells[2].querySelector('a')?.attributes['title'];
 
       investigators.add(Investigator(
-          name, occupation, addon ?? 'Unknown addon', wikiUrl ?? ''));
+          name, occupation, gameSet ?? 'Unknown addon', wikiUrl ?? ''));
     }
   }
 
@@ -65,8 +67,9 @@ void main() async {
   final investigators = await parseInvestigators(content);
 
   try {
-    await File(investigatorsPath).writeAsString(jsonEncode(investigators));
-    print('Wrote investigators data to $investigatorsPath');
+    const path = parsedDataPath + investigatorsFile;
+    await File(path).writeAsString(jsonEncode(investigators));
+    print('Wrote investigators data to $path');
   } on FileSystemException catch (exception) {
     print('Failed to write a file: $exception');
   }
