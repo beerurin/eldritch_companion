@@ -20,8 +20,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
     return NavigationBar(
       selectedIndex: widget.selectedIndex,
       destinations: [
-        IconButton(onPressed: () => {}, icon: const Icon(Icons.query_stats)),
-        IconButton(onPressed: () => {}, icon: const Icon(Icons.autorenew)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.query_stats)),
+        IconButton(
+            onPressed: () {}, icon: const Icon(Icons.question_mark_outlined)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.autorenew)),
         IconButton(
             onPressed: () => {}, icon: const Icon(Icons.settings_outlined))
       ],

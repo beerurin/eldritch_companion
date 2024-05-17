@@ -18,7 +18,7 @@ import 'package:eldritch_companion/common/constants.dart';
 import 'package:eldritch_companion/common/theme.dart';
 import 'package:eldritch_companion/pages/randomiser/investigator_randomiser.dart';
 import 'package:eldritch_companion/pages/randomiser/random_cards_page.dart';
-import 'package:eldritch_companion/storage/game_data_storage.dart';
+import 'package:eldritch_companion/models/game_data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -69,7 +69,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [Provider(create: (context) => GameDataStorage())],
+        providers: [Provider(create: (context) => GameDataModel())],
         child: MaterialApp.router(
           theme: appTheme,
           routerConfig: router(),

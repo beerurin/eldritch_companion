@@ -24,4 +24,10 @@ class Investigator {
   factory Investigator.fromJson(Map<String, dynamic> json) =>
       _$InvestigatorFromJson(json);
   Map<String, dynamic> toJson() => _$InvestigatorToJson(this);
+
+  @override
+  bool operator ==(other) => other is Investigator && other.name == name;
+
+  @override
+  int get hashCode => name.hashCode;
 }

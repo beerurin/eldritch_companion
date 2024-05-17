@@ -3,7 +3,7 @@ Copyright (C) 2024 Roman Zubin
 
 Full notice can be found at /lib/main.dart file. */
 
-import 'package:eldritch_companion/bottom_navigation_bar.dart';
+import 'package:eldritch_companion/bottom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,6 +13,9 @@ class RandomCardsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Randomiser'),
+      ),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
