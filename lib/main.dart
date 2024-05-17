@@ -15,11 +15,31 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>. */
 
 import 'package:eldritch_companion/constants.dart';
+import 'package:eldritch_companion/pages/randomiser/investigator_randomiser.dart';
 import 'package:eldritch_companion/pages/randomiser/random_cards_page.dart';
+import 'package:eldritch_companion/storage/game_data_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() => runApp(const MyApp());
+
+GoRouter router() {
+  return GoRouter(
+    initialLocation: '/randomiser',
+    routes: [
+      GoRoute(
+        path: '/randomiser',
+        builder: (context, state) => const RandomCardsPage(),
+        routes: [
+          GoRoute(
+            path: 'investigator',
+            builder: (context, state) => const InvestigatorRandomiser(),
+          ),
+        ],
+      ),
+    ],
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -50,19 +70,10 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(appName),
-      ),
-      body: const RandomCardsPage(),
-      bottomNavigationBar: NavigationBar(
-        destinations: [
-          IconButton(onPressed: () => {}, icon: const Icon(Icons.query_stats)),
-          IconButton(onPressed: () => {}, icon: const Icon(Icons.autorenew)),
-          IconButton(
-              onPressed: () => {}, icon: const Icon(Icons.settings_outlined))
-        ],
-      ),
-    );
+    return MultiProvider(
+        providers: [Provider(create: (context) => GameDataStorage())],
+        child: MaterialApp.router(
+          routerConfig: router(),
+        ));
   }
 }
