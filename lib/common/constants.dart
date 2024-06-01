@@ -8,4 +8,4 @@ const String appName = 'Eldritch Companion';
 const String wikiSite = "eldritchhorror.fandom.com";
 
 // Game data files
-const String investigatorsFile = 'investigators.json';
+const String investigatorsFilePath = 'assets/investigators.json';

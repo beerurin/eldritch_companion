@@ -18,8 +18,7 @@ class GameDataModel {
       await Future.delayed(const Duration(seconds: 1));
     }
 
-    var investigatorsJson =
-        await rootBundle.loadString('assets/investigators.json');
+    var investigatorsJson = await rootBundle.loadString(investigatorsFilePath);
     final decodedList = jsonDecode(investigatorsJson) as List<dynamic>;
     _investigators = decodedList
         .map((e) => Investigator.fromJson(e as Map<String, dynamic>))
