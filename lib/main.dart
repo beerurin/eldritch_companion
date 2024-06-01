@@ -16,8 +16,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>. */
 
 import 'package:eldritch_companion/common/constants.dart';
 import 'package:eldritch_companion/common/theme.dart';
+import 'package:eldritch_companion/models/app_settings_model.dart';
 import 'package:eldritch_companion/pages/randomiser/investigator_randomiser.dart';
-import 'package:eldritch_companion/pages/randomiser/random_cards_page.dart';
+import 'package:eldritch_companion/pages/randomiser/randomiser_page.dart';
 import 'package:eldritch_companion/models/game_data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -31,7 +32,7 @@ GoRouter router() {
     routes: [
       GoRoute(
         path: '/randomiser',
-        builder: (context, state) => const RandomCardsPage(),
+        builder: (context, state) => const RandomiserPage(),
         routes: [
           GoRoute(
             path: 'investigator',
@@ -69,7 +70,10 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [Provider(create: (context) => GameDataModel())],
+        providers: [
+          Provider(create: (context) => GameDataModel()),
+          Provider(create: (context) => AppSettingsModel())
+        ],
         child: MaterialApp.router(
           theme: appTheme,
           routerConfig: router(),

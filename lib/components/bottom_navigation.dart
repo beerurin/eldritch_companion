@@ -24,8 +24,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
         IconButton(
             onPressed: () {}, icon: const Icon(Icons.question_mark_outlined)),
         IconButton(onPressed: () {}, icon: const Icon(Icons.autorenew)),
-        IconButton(
-            onPressed: () => {}, icon: const Icon(Icons.settings_outlined))
       ],
     );
   }

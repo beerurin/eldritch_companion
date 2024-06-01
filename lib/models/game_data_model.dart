@@ -3,7 +3,6 @@ Copyright (C) 2024 Roman Zubin
 
 Full notice can be found at /lib/main.dart file. */
 
-import 'dart:io';
 import 'dart:convert';
 import 'package:eldritch_companion/common/constants.dart';
 import 'package:eldritch_companion/extensions/list.dart';
@@ -13,8 +12,6 @@ import 'package:flutter/services.dart' show rootBundle;
 
 class GameDataModel {
   List<Investigator> _investigators = List.empty();
-
-  List<Investigator> get investigators => _investigators;
 
   Future _getInvestigatorsFromDisk() async {
     if (kDebugMode) {
@@ -41,9 +38,9 @@ class GameDataModel {
     List<Investigator> inv = List.empty(growable: true);
 
     for (var i = 0; i < count; i++) {
-      var randomInvestigator = investigators.randomItem();
+      var randomInvestigator = _investigators.randomItem();
       while (inv.hasItem(randomInvestigator)) {
-        randomInvestigator = investigators.randomItem();
+        randomInvestigator = _investigators.randomItem();
       }
       inv.add(randomInvestigator);
     }

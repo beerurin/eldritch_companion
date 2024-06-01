@@ -17,14 +17,14 @@ class InvestigatorRandomiser extends StatefulWidget {
 }
 
 class _InvestigatorRandomiserState extends State<InvestigatorRandomiser> {
-  late GameDataModel model;
+  late GameDataModel gameDataModel;
   late Future<List<Investigator>> _getRandomInvestigators;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    model = Provider.of<GameDataModel>(context);
-    _getRandomInvestigators = model.getRandomInvestigators(3);
+    gameDataModel = Provider.of<GameDataModel>(context);
+    _getRandomInvestigators = gameDataModel.getRandomInvestigators(3);
   }
 
   @override
