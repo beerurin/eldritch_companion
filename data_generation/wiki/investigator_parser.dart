@@ -3,7 +3,7 @@ Copyright (C) 2024 Roman Zubin
 
 Full notice can be found at /lib/main.dart file. */
 
-import 'package:eldritch_companion/types/investigator.dart';
+import 'package:eldritch_companion/types/cards/investigator.dart';
 import 'package:html/parser.dart' as parser;
 
 // Function to parse the Investigator data from the HTML table
@@ -34,8 +34,11 @@ Future<List<Investigator>> parseInvestigators(String content) async {
 
       final gameSet = cells[2].querySelector('a')?.attributes['title'];
 
-      investigators.add(Investigator(
-          name, occupation, gameSet ?? 'Unknown addon', wikiUrl ?? ''));
+      Investigator newInvestigator =
+          Investigator(name, occupation, gameSet ?? 'Unknown addon');
+      newInvestigator.wikiUrl = wikiUrl ?? '';
+
+      investigators.add(newInvestigator);
     }
   }
 

@@ -3,26 +3,20 @@ Copyright (C) 2024 Roman Zubin
 
 Full notice can be found at /lib/main.dart file. */
 
+import 'package:eldritch_companion/types/cards/game_card.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'investigator.g.dart';
 
 @JsonSerializable()
-class Investigator {
-  final String name;
+class Investigator extends GameCard {
   final String occupation;
-  final String gameSet;
-  final String wikiUrl;
 
-  Investigator(
-    this.name,
-    this.occupation,
-    this.gameSet,
-    this.wikiUrl,
-  );
+  Investigator(super.name, super.gameSet, this.occupation);
 
   factory Investigator.fromJson(Map<String, dynamic> json) =>
       _$InvestigatorFromJson(json);
+  @override
   Map<String, dynamic> toJson() => _$InvestigatorToJson(this);
 
   @override

@@ -18,5 +18,5 @@ void main() async {
   final content = await fetchWikiWebpageContent(wikiInvestigatorsPath);
   final investigators = await parseInvestigators(content);
   await writeStringToFile(
-      "../../$investigatorsFilePath", jsonEncode(investigators));
+      "../$investigatorsFilePath", jsonEncode(investigators));
 }

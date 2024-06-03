@@ -6,7 +6,7 @@ Full notice can be found at /lib/main.dart file. */
 import 'dart:convert';
 import 'package:eldritch_companion/common/constants.dart';
 import 'package:eldritch_companion/extensions/list.dart';
-import 'package:eldritch_companion/types/investigator.dart';
+import 'package:eldritch_companion/types/cards/investigator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
