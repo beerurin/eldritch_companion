@@ -5,7 +5,9 @@ This app is work in progress for now.
 It's designed to automate some things and provide statistics for your games.
 
 List of planned features:
+- Digital Mythos deck
 - Random card pulling
+- Campaign tracker and assistant
 - Game result recording and various statitics based on those records
 - Data backup to cloud/file
 - Data import from [Eldritch Horror Assistant](https://play.google.com/store/apps/details?id=ru.mgusev.eldritchhorror).
