@@ -3,7 +3,7 @@ Copyright (C) 2024 Roman Zubin
 
 Full notice can be found at /lib/main.dart file. */
 
-import 'package:eldritch_companion/investigator.dart';
+import 'package:eldritch_companion/types/investigator.dart';
 import 'package:eldritch_companion/models/game_data_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

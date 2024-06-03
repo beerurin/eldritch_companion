@@ -3,7 +3,7 @@ Copyright (C) 2024 Roman Zubin
 
 Full notice can be found at /lib/main.dart file. */
 
-import 'package:eldritch_companion/investigator.dart';
+import 'package:eldritch_companion/types/investigator.dart';
 import 'package:html/parser.dart' as parser;
 
 // Function to parse the Investigator data from the HTML table

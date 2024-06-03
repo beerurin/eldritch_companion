@@ -12,11 +12,11 @@ import 'package:eldritch_companion/common/constants.dart';
 import 'dart:convert';
 import 'common.dart';
 import 'constants.dart';
-import 'investigator_parser.dart';
+import 'wiki/investigator_parser.dart';
 
 void main() async {
   final content = await fetchWikiWebpageContent(wikiInvestigatorsPath);
   final investigators = await parseInvestigators(content);
   await writeStringToFile(
-      "../$investigatorsFilePath", jsonEncode(investigators));
+      "../../$investigatorsFilePath", jsonEncode(investigators));
 }
