@@ -17,66 +17,114 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>. */
 import 'package:eldritch_companion/common/constants.dart';
 import 'package:eldritch_companion/common/theme.dart';
 import 'package:eldritch_companion/models/app_settings_model.dart';
-import 'package:eldritch_companion/pages/randomiser/investigator_randomiser.dart';
+import 'package:eldritch_companion/pages/app_settings_page.dart';
+import 'package:eldritch_companion/pages/cube_simulator_page.dart';
+import 'package:eldritch_companion/pages/games_page.dart';
 import 'package:eldritch_companion/pages/randomiser/randomiser_page.dart';
 import 'package:eldritch_companion/models/game_data_model.dart';
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:eldritch_companion/pages/statistics_page.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const EldritchCompanionApp());
 
-GoRouter router() {
-  return GoRouter(
-    initialLocation: '/randomiser',
-    routes: [
-      GoRoute(
-        path: '/randomiser',
-        builder: (context, state) => const RandomiserPage(),
-        routes: [
-          GoRoute(
-            path: 'investigator',
-            builder: (context, state) => const InvestigatorRandomiser(),
-          ),
-        ],
-      ),
-    ],
-  );
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class EldritchCompanionApp extends StatelessWidget {
+  const EldritchCompanionApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: appName,
       theme: appTheme,
-      home: const MainPage(title: 'Home Page'),
+      home: const MainPage(),
     );
   }
 }
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key, required this.title});
-
-  final String title;
+  const MainPage({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<StatefulWidget> createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
+  int currentPageIndex = 0;
+
+  static const navBarIcons = [
+    Icons.home,
+    Icons.stacked_bar_chart,
+    Icons.sentiment_neutral_outlined,
+    Icons.question_mark,
+    Icons.settings,
+  ];
+
+  Widget? pageChooser(int index) {
+    switch (index) {
+      case 0:
+        return const GamesPage();
+      case 1:
+        return const StatisticsPage();
+      case 2:
+        return const CubeSimulatorPage();
+      case 3:
+        return Provider(
+          create: (context) => GameDataModel(),
+          child: const RandomiserPage(),
+        );
+      case 4:
+        return Provider(
+          create: (context) => AppSettingsModel(),
+          child: const AppSettingsPage(),
+        );
+      default:
+        return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          Provider(create: (context) => GameDataModel()),
-          Provider(create: (context) => AppSettingsModel())
-        ],
-        child: MaterialApp.router(
-          theme: appTheme,
-          routerConfig: router(),
-        ));
+    return MaterialApp(
+      title: appName,
+      theme: appTheme,
+      home: Scaffold(
+        extendBody: true,
+        appBar: AppBar(
+          title: const Text(appName),
+        ),
+        body: pageChooser(currentPageIndex),
+        bottomNavigationBar: AnimatedBottomNavigationBar.builder(
+            itemCount: currentPageIndex == 2
+                ? navBarIcons.length - 1
+                : navBarIcons.length,
+            tabBuilder: (int index, bool isActive) {
+              if (currentPageIndex == 2) {
+                return Icon(navBarIcons[index + 1]);
+              }
+              return Icon(navBarIcons[index]);
+            },
+            activeIndex: currentPageIndex,
+            gapLocation:
+                currentPageIndex == 2 ? GapLocation.center : GapLocation.none,
+            onTap: (int index) {
+              if (currentPageIndex == 2) {
+                setState(() => currentPageIndex = index + 1);
+              } else {
+                setState(() => currentPageIndex = index);
+              }
+            }),
+        floatingActionButtonLocation: currentPageIndex == 2
+            ? FloatingActionButtonLocation.centerDocked
+            : null,
+        floatingActionButton: currentPageIndex == 2
+            ? FloatingActionButton(
+                shape: const CircleBorder(),
+                onPressed: () {},
+                child: Icon(navBarIcons[2]),
+              )
+            : null,
+      ),
+    );
   }
 }

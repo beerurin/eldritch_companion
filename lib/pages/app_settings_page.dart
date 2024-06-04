@@ -25,17 +25,12 @@ class _AppSettingsPageState extends State<AppSettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings'),
-      ),
-      body: ListView(
-        children: [
-          const Text('A text'),
-          const Text('Another text'),
-          Text("Some boolean: ${appSettingsModel.justSomeBoolean.toString()}"),
-        ],
-      ),
+    return ListView(
+      children: [
+        const Text('A text'),
+        const Text('Another text'),
+        Text("Some boolean: ${appSettingsModel.justSomeBoolean.toString()}"),
+      ],
     );
   }
 }
