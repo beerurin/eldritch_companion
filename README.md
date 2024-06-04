@@ -23,6 +23,10 @@ Although instructions will be added.
 
 Before building the app run `dart run build_runner build`.
 
-To get latest data from the wiki for the application to use
-run `dart parser.dart` in the `parsing` directory.
-Without this data app **will not be functional**!
+You can also start `dart run build_runner watch -d` in a separate
+terminal window to automatically generate needed code.
+
+**Important!** This application relies on another program, that generates
+and parses some data for the companion. Without this data app **will not be functional**!
+
+To generate everything use the `dart run main.dart` in the `data_generation` directory.
