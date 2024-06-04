@@ -99,7 +99,7 @@ class _MainPageState extends State<MainPage> {
                 ? navBarIcons.length - 1
                 : navBarIcons.length,
             tabBuilder: (int index, bool isActive) {
-              if (currentPageIndex == 2) {
+              if (currentPageIndex == 2 && index >= 2) {
                 return Icon(navBarIcons[index + 1]);
               }
               return Icon(navBarIcons[index]);
