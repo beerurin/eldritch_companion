@@ -74,7 +74,9 @@ flutter:
   assets:
     - assets/investigators.json
     # icons
+    - assets/icons/dice.svg
     - assets/icons/randomiser.svg
+    - assets/icons/statistics.svg
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
