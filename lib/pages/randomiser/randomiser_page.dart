@@ -3,8 +3,10 @@ Copyright (C) 2024 Roman Zubin
 
 Full notice can be found at /lib/main.dart file. */
 
+import 'package:eldritch_companion/models/game_data_model.dart';
+import 'package:eldritch_companion/pages/randomiser/investigator_randomiser.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class RandomiserPage extends StatelessWidget {
   const RandomiserPage({super.key});
@@ -18,7 +20,11 @@ class RandomiserPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextButton(
-              onPressed: () => context.go('/randomiser/investigator'),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => Provider(
+                        create: (context) => GameDataModel(),
+                        child: const InvestigatorRandomiser(),
+                      ))),
               child: const Row(
                 children: [
                   Icon(Icons.search),

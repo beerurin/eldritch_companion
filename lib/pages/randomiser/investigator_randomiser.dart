@@ -6,7 +6,6 @@ Full notice can be found at /lib/main.dart file. */
 import 'package:eldritch_companion/types/cards/investigator.dart';
 import 'package:eldritch_companion/models/game_data_model.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class InvestigatorRandomiser extends StatefulWidget {
@@ -57,7 +56,7 @@ class _InvestigatorRandomiserState extends State<InvestigatorRandomiser> {
         ),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.autorenew),
-          onPressed: () => context.pushReplacement('/randomiser/investigator'),
+          onPressed: () => {},
         ));
   }
 }

@@ -108,7 +108,7 @@ class _MainPageState extends State<MainPage> {
             gapLocation:
                 currentPageIndex == 2 ? GapLocation.center : GapLocation.none,
             onTap: (int index) {
-              if (currentPageIndex == 2) {
+              if (currentPageIndex == 2 && index >= 2) {
                 setState(() => currentPageIndex = index + 1);
               } else {
                 setState(() => currentPageIndex = index);
