@@ -8,6 +8,7 @@ import 'package:eldritch_companion/pages/randomiser/randomiser_modal_bottom.dart
 import 'package:eldritch_companion/types/cards/game_card.dart';
 import 'package:eldritch_companion/types/cards/investigator.dart';
 import 'package:flutter/material.dart';
+import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
 import 'package:eldritch_companion/models/game_data_model.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -20,7 +21,7 @@ class RandomiserPage extends StatefulWidget {
 }
 
 class _RandomiserPageState extends State<RandomiserPage> {
-  int cardsToGenerate = 2;
+  int cardsToGenerate = 1;
   bool duplicateCards = false;
 
   late GameDataModel gameDataModel;
@@ -90,23 +91,14 @@ class _RandomiserPageState extends State<RandomiserPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: TextField(
-                      keyboardType: TextInputType.number,
-                      maxLength: 2,
-                      enableIMEPersonalizedLearning: false,
-                      textAlign: TextAlign.center,
-                      controller: TextEditingController(
-                          text: cardsToGenerate.toString()),
-                      onChanged: (value) {
-                        int? parsedValue = int.tryParse(value);
-                        if (parsedValue != null) {
-                          setState(() {
-                            cardsToGenerate = parsedValue;
-                          });
-                        }
-                      },
-                    ),
-                  ),
+                      child: NumberPicker(
+                          axis: Axis.horizontal,
+                          itemWidth: 50,
+                          minValue: 1,
+                          maxValue: 20,
+                          value: cardsToGenerate,
+                          onChanged: (value) =>
+                              setState(() => cardsToGenerate = value))),
                   Expanded(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
