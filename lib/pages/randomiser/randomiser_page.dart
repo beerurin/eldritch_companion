@@ -3,7 +3,11 @@ Copyright (C) 2024 Roman Zubin
 
 Full notice can be found at /lib/main.dart file. */
 
+import 'package:eldritch_companion/pages/randomiser/randomiser_modal_bottom.dart';
+import 'package:eldritch_companion/types/cards/game_card.dart';
+import 'package:eldritch_companion/types/cards/investigator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:eldritch_companion/models/game_data_model.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
@@ -18,6 +22,29 @@ class _RandomiserPageState extends State<RandomiserPage> {
   int cardsToGenerate = 2;
   bool duplicateCards = false;
 
+  late GameDataModel gameDataModel;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    gameDataModel = Provider.of<GameDataModel>(context);
+  }
+
+  void showRandomCards(Type cardType) {
+    showMaterialModalBottomSheet(
+        expand: false,
+        context: context,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+        ),
+        builder: (context) => RandomiserModalBottom(
+              gameDataModel: gameDataModel,
+              cardCount: cardsToGenerate,
+              cardType: cardType,
+            ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -27,44 +54,15 @@ class _RandomiserPageState extends State<RandomiserPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextButton(
-              onPressed: () => showMaterialModalBottomSheet(
-                expand: false,
-                context: context,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10)),
-                ),
-                builder: (context) => FutureBuilder(
-                    future: Future.delayed(const Duration(seconds: 1)),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState != ConnectionState.done) {
-                        return const SizedBox(
-                            height: 300,
-                            child: Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  CircularProgressIndicator(),
-                                  Text('Reading data...'),
-                                ],
-                              ),
-                            ));
-                      }
-                      return const SizedBox(
-                        height: 300,
-                        child: Center(
-                          child: Text('Nothing to show :('),
-                        ),
-                      );
-                    }),
-              ),
               child: const Row(
                 children: [
                   Icon(Icons.search),
                   Text('Investigator'),
                 ],
               ),
+              onPressed: () {
+                showRandomCards(Investigator);
+              },
             ),
           ],
         ),

@@ -23,7 +23,7 @@ class _InvestigatorRandomiserState extends State<InvestigatorRandomiser> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     gameDataModel = Provider.of<GameDataModel>(context);
-    _getRandomInvestigators = gameDataModel.getRandomInvestigators(3);
+    // _getRandomInvestigators = gameDataModel.getRandomInvestigators(3);
   }
 
   @override
