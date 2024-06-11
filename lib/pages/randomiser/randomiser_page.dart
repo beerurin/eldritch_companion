@@ -3,6 +3,7 @@ Copyright (C) 2024 Roman Zubin
 
 Full notice can be found at /lib/main.dart file. */
 
+import 'package:eldritch_companion/common/constants.dart';
 import 'package:eldritch_companion/pages/randomiser/randomiser_modal_bottom.dart';
 import 'package:eldritch_companion/types/cards/game_card.dart';
 import 'package:eldritch_companion/types/cards/investigator.dart';
@@ -34,10 +35,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
     showMaterialModalBottomSheet(
         expand: false,
         context: context,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-        ),
+        shape: defaultRoundedRectangle,
         builder: (context) => RandomiserModalBottom(
               gameDataModel: gameDataModel,
               cardCount: cardsToGenerate,
@@ -47,31 +45,83 @@ class _RandomiserPageState extends State<RandomiserPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Stack(
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextButton(
-              child: const Row(
-                children: [
-                  Icon(Icons.search),
-                  Text('Investigator'),
-                ],
-              ),
-              onPressed: () {
-                showRandomCards(Investigator);
-              },
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextButton(
+                  child: const Row(
+                    children: [
+                      Icon(Icons.search),
+                      Text('Investigator'),
+                    ],
+                  ),
+                  onPressed: () {
+                    showRandomCards(Investigator);
+                  },
+                ),
+              ],
             ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextButton(
+                    onPressed: () => {},
+                    child: const Text('I don\'t do anything :('))
+              ],
+            )
           ],
         ),
         Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            TextButton(
-                onPressed: () => {},
-                child: const Text('I don\'t do anything :('))
+            Expanded(child: Container()),
+            Container(
+              decoration: const ShapeDecoration(
+                color: Colors.amber,
+                shape: defaultRoundedRectangle,
+              ),
+              height: 80,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      maxLength: 2,
+                      enableIMEPersonalizedLearning: false,
+                      textAlign: TextAlign.center,
+                      controller: TextEditingController(
+                          text: cardsToGenerate.toString()),
+                      onChanged: (value) {
+                        int? parsedValue = int.tryParse(value);
+                        if (parsedValue != null) {
+                          setState(() {
+                            cardsToGenerate = parsedValue;
+                          });
+                        }
+                      },
+                    ),
+                  ),
+                  Expanded(
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Allow duplicates'),
+                      Checkbox(
+                          value: duplicateCards,
+                          onChanged: (value) {
+                            setState(() => duplicateCards = value ?? false);
+                          }),
+                    ],
+                  )),
+                ],
+              ),
+            ),
           ],
         )
       ],

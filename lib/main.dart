@@ -60,7 +60,7 @@ class _MainPageState extends State<MainPage> {
     Icons.settings,
   ];
 
-  Widget? pageChooser(int index) {
+  Widget pageChooser(int index) {
     switch (index) {
       case 0:
         return const GamesPage();
@@ -79,7 +79,9 @@ class _MainPageState extends State<MainPage> {
           child: const AppSettingsPage(),
         );
       default:
-        return null;
+        return Center(
+          child: Text('Invalid index: $index'),
+        );
     }
   }
 
@@ -93,7 +95,7 @@ class _MainPageState extends State<MainPage> {
         appBar: AppBar(
           title: const Text(appName),
         ),
-        body: pageChooser(currentPageIndex),
+        body: SafeArea(child: pageChooser(currentPageIndex)),
         bottomNavigationBar: AnimatedBottomNavigationBar.builder(
             itemCount: currentPageIndex == 2
                 ? navBarIcons.length - 1
