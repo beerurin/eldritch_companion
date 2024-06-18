@@ -52,6 +52,14 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int currentPageIndex = 0;
 
+  static const appBarTitles = [
+    'Games',
+    'Statistics',
+    'Cube simulator',
+    'Randomiser',
+    'Settings',
+  ];
+
   static const navBarIcons = [
     Icons.home,
     Icons.stacked_bar_chart,
@@ -93,7 +101,7 @@ class _MainPageState extends State<MainPage> {
       home: Scaffold(
         extendBody: true,
         appBar: AppBar(
-          title: const Text(appName),
+          title: Text(appBarTitles[currentPageIndex]),
         ),
         body: SafeArea(child: pageChooser(currentPageIndex)),
         bottomNavigationBar: AnimatedBottomNavigationBar.builder(
