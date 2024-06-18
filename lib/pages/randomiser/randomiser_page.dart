@@ -5,6 +5,7 @@ Full notice can be found at /lib/main.dart file. */
 
 import 'package:eldritch_companion/common/constants.dart';
 import 'package:eldritch_companion/pages/randomiser/randomiser_modal_bottom.dart';
+import 'package:eldritch_companion/types/cards/investigator.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
@@ -23,10 +24,14 @@ class _RandomiserPageState extends State<RandomiserPage> {
   bool duplicateCards = false;
 
   bool conditionMultichoice = false;
+  bool investigatorMultichoice = false;
 
   late GameDataModel gameDataModel;
 
   static const rowPadding = SizedBox(width: 8);
+  static const columnPadding = SizedBox(height: 8);
+
+  static const double randomiserControlHeight = 80;
 
   @override
   void didChangeDependencies() {
@@ -183,7 +188,304 @@ class _RandomiserPageState extends State<RandomiserPage> {
                       )
                     ],
                   ),
-                )
+                ),
+                columnPadding,
+                // Spells
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  width: double.infinity,
+                  decoration: const ShapeDecoration(
+                      color: Colors.amber,
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.all(defaultCircularRadius)),
+                      shadows: [subtleShadow]),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      ElevatedButton(
+                        style: const ButtonStyle(
+                            backgroundColor:
+                                WidgetStatePropertyAll(spellColor)),
+                        onPressed: () {},
+                        child: const Text(
+                          'Spell',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      // Table
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: const Text('Incantation'),
+                            ),
+                          ),
+                          rowPadding,
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: const Text('Ritual'),
+                            ),
+                          ),
+                          rowPadding,
+                          Expanded(
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: const Text('Glamour'),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text('Multichoice'),
+                          Switch(
+                              value: conditionMultichoice,
+                              onChanged: (value) =>
+                                  setState(() => conditionMultichoice = value))
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                columnPadding,
+                // Unique asset
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  width: double.infinity,
+                  decoration: const ShapeDecoration(
+                      color: Colors.amber,
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.all(defaultCircularRadius)),
+                      shadows: [subtleShadow]),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      ElevatedButton(
+                        style: const ButtonStyle(
+                            backgroundColor:
+                                WidgetStatePropertyAll(uniqueAssetColor)),
+                        onPressed: () {},
+                        child: const Text(
+                          'Unique asset',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      // Table
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Ally'),
+                                ),
+                              ),
+                              rowPadding,
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Character'),
+                                ),
+                              ),
+                              rowPadding,
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Relic'),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Item'),
+                                ),
+                              ),
+                              rowPadding,
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Trinket'),
+                                ),
+                              ),
+                              rowPadding,
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Magical'),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Tome'),
+                                ),
+                              ),
+                              rowPadding,
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Weapon'),
+                                ),
+                              ),
+                              rowPadding,
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Task'),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Tarot'),
+                                ),
+                              ),
+                              rowPadding,
+                              Expanded(child: Container()),
+                              rowPadding,
+                              Expanded(child: Container()),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text('Multichoice'),
+                          Switch(
+                              value: conditionMultichoice,
+                              onChanged: (value) =>
+                                  setState(() => conditionMultichoice = value))
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                columnPadding,
+                // Investigator
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  width: double.infinity,
+                  decoration: const ShapeDecoration(
+                      color: Colors.amber,
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.all(defaultCircularRadius)),
+                      shadows: [subtleShadow]),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      ElevatedButton(
+                        style: const ButtonStyle(
+                            backgroundColor:
+                                WidgetStatePropertyAll(investigatorColor)),
+                        onPressed: () => showRandomCards(Investigator),
+                        child: const Text(
+                          'Investigator',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      // Table
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Magic'),
+                                ),
+                              ),
+                              rowPadding,
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Combat'),
+                                ),
+                              ),
+                              rowPadding,
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Research'),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Expedition'),
+                                ),
+                              ),
+                              rowPadding,
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Gate Closer'),
+                                ),
+                              ),
+                              rowPadding,
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('Support'),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Text('All-rounder'),
+                                ),
+                              ),
+                              rowPadding,
+                              Expanded(child: Container()),
+                              rowPadding,
+                              Expanded(child: Container()),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text('Multichoice'),
+                          Switch(
+                              value: investigatorMultichoice,
+                              onChanged: (value) => setState(
+                                  () => investigatorMultichoice = value))
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                // padding
+                columnPadding,
+                Container(height: randomiserControlHeight)
               ],
             )
           ],
@@ -197,7 +499,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                   color: Colors.amber,
                   shape: defaultRoundedRectangleTop,
                   shadows: [subtleShadow]),
-              height: 80,
+              height: randomiserControlHeight,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,

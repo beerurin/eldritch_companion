@@ -26,3 +26,9 @@ const subtleShadow =
 // Colors
 const Color conditionColor = Color.fromRGBO(111, 101, 101, 1);
 const Color conditionColorAccent = Color.fromRGBO(188, 184, 184, 1);
+const Color spellColor = Color.fromRGBO(142, 114, 166, 1);
+const Color spellColorAccent = Color.fromRGBO(211, 202, 218, 1);
+const Color uniqueAssetColor = Color.fromRGBO(225, 183, 102, 1);
+const Color uniqueAssetColorAccent = Color.fromRGBO(240, 222, 189, 1);
+const Color investigatorColor = Color.fromRGBO(172, 107, 102, 1);
+const Color investigatorAccent = Color.fromRGBO(223, 189, 184, 1);
