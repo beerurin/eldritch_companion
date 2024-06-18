@@ -64,12 +64,13 @@ class _RandomiserPageState extends State<RandomiserPage> {
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
+                columnPadding,
                 // Conditions
                 Container(
                   padding: const EdgeInsets.all(8),
                   width: double.infinity,
                   decoration: const ShapeDecoration(
-                      color: Colors.amber,
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius:
                               BorderRadius.all(defaultCircularRadius)),
@@ -201,7 +202,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                   padding: const EdgeInsets.all(8),
                   width: double.infinity,
                   decoration: const ShapeDecoration(
-                      color: Colors.amber,
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius:
                               BorderRadius.all(defaultCircularRadius)),
@@ -264,7 +265,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                   padding: const EdgeInsets.all(8),
                   width: double.infinity,
                   decoration: const ShapeDecoration(
-                      color: Colors.amber,
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius:
                               BorderRadius.all(defaultCircularRadius)),
@@ -396,7 +397,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                   padding: const EdgeInsets.all(8),
                   width: double.infinity,
                   decoration: const ShapeDecoration(
-                      color: Colors.amber,
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius:
                               BorderRadius.all(defaultCircularRadius)),
@@ -510,7 +511,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
             Expanded(child: Container()),
             Container(
               decoration: const ShapeDecoration(
-                  color: Colors.amber,
+                  color: Colors.white,
                   shape: defaultRoundedRectangleTop,
                   shadows: [subtleShadow]),
               height: randomiserControlHeight,
