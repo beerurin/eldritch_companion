@@ -5,7 +5,6 @@ Full notice can be found at /lib/main.dart file. */
 
 import 'package:eldritch_companion/common/constants.dart';
 import 'package:eldritch_companion/pages/randomiser/randomiser_modal_bottom.dart';
-import 'package:eldritch_companion/types/cards/investigator.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +22,8 @@ class _RandomiserPageState extends State<RandomiserPage> {
   int cardsToGenerate = 1;
   bool duplicateCards = false;
 
+  bool conditionMultichoice = false;
+
   late GameDataModel gameDataModel;
 
   @override
@@ -35,7 +36,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
     showMaterialModalBottomSheet(
         expand: false,
         context: context,
-        shape: defaultRoundedRectangle,
+        shape: defaultRoundedRectangleTop,
         builder: (context) => RandomiserModalBottom(
               gameDataModel: gameDataModel,
               cardCount: cardsToGenerate,
@@ -47,43 +48,143 @@ class _RandomiserPageState extends State<RandomiserPage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        ListView(
+          scrollDirection: Axis.vertical,
           children: [
+            // Condition
             Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
               children: [
-                TextButton(
-                  child: const Row(
+                // Conditions
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  width: double.infinity,
+                  decoration: const ShapeDecoration(
+                      color: Colors.amber,
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.all(defaultCircularRadius))),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Icon(Icons.search),
-                      Text('Investigator'),
+                      MaterialButton(
+                        onPressed: () {},
+                        child: const Text('Condition'),
+                      ),
+                      // Table
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                child: MaterialButton(
+                                  onPressed: () {},
+                                  child: const Text('Bane'),
+                                ),
+                              ),
+                              Expanded(
+                                child: MaterialButton(
+                                  onPressed: () {},
+                                  child: const Text('Boon'),
+                                ),
+                              ),
+                              Expanded(
+                                child: MaterialButton(
+                                  onPressed: () {},
+                                  child: const Text('Deal'),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: MaterialButton(
+                                  onPressed: () {},
+                                  child: const Text('Exposure'),
+                                ),
+                              ),
+                              Expanded(
+                                child: MaterialButton(
+                                  onPressed: () {},
+                                  child: const Text('Illness'),
+                                ),
+                              ),
+                              Expanded(
+                                child: MaterialButton(
+                                  onPressed: () {},
+                                  child: const Text('Injury'),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: MaterialButton(
+                                  onPressed: () {},
+                                  child: const Text('Madness'),
+                                ),
+                              ),
+                              Expanded(
+                                child: MaterialButton(
+                                  onPressed: () {},
+                                  child: const Text('Pursuit'),
+                                ),
+                              ),
+                              Expanded(
+                                child: MaterialButton(
+                                  onPressed: () {},
+                                  child: const Text('Restriction'),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: MaterialButton(
+                                  onPressed: () {},
+                                  child: const Text('Talent'),
+                                ),
+                              ),
+                              Expanded(child: Container()),
+                              Expanded(child: Container()),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text('Multichoice'),
+                          Switch(
+                              value: conditionMultichoice,
+                              onChanged: (value) =>
+                                  setState(() => conditionMultichoice = value))
+                        ],
+                      )
                     ],
                   ),
-                  onPressed: () {
-                    showRandomCards(Investigator);
-                  },
-                ),
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                TextButton(
-                    onPressed: () => {},
-                    child: const Text('I don\'t do anything :('))
+                )
               ],
             )
           ],
         ),
+        // Randomiser controls
         Column(
           children: [
             Expanded(child: Container()),
             Container(
               decoration: const ShapeDecoration(
-                color: Colors.amber,
-                shape: defaultRoundedRectangle,
-              ),
+                  color: Colors.amber,
+                  shape: defaultRoundedRectangleTop,
+                  shadows: [
+                    BoxShadow(
+                        color: Colors.black12,
+                        offset: Offset(0, 0),
+                        blurRadius: 5)
+                  ]),
               height: 80,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

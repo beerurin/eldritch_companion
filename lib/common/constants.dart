@@ -13,8 +13,8 @@ const String wikiSite = "eldritchhorror.fandom.com";
 const String investigatorsFilePath = 'assets/investigators.json';
 
 // Design
-const defaultCircularRadious = Radius.circular(16);
-const defaultRoundedRectangle = RoundedRectangleBorder(
+const defaultCircularRadius = Radius.circular(12);
+const defaultRoundedRectangleTop = RoundedRectangleBorder(
   borderRadius: BorderRadius.only(
-      topLeft: defaultCircularRadious, topRight: defaultCircularRadious),
+      topLeft: defaultCircularRadius, topRight: defaultCircularRadius),
 );
