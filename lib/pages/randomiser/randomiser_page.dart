@@ -87,6 +87,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
+                      columnPadding,
                       // Table
                       Column(
                         children: [
@@ -114,6 +115,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                               ),
                             ],
                           ),
+                          columnPadding,
                           Row(
                             children: [
                               Expanded(
@@ -138,6 +140,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                               ),
                             ],
                           ),
+                          columnPadding,
                           Row(
                             children: [
                               Expanded(
@@ -162,6 +165,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                               ),
                             ],
                           ),
+                          columnPadding,
                           Row(
                             children: [
                               Expanded(
@@ -215,6 +219,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
+                      columnPadding,
                       // Table
                       Row(
                         children: [
@@ -277,6 +282,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
+                      columnPadding,
                       // Table
                       Column(
                         children: [
@@ -304,6 +310,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                               ),
                             ],
                           ),
+                          columnPadding,
                           Row(
                             children: [
                               Expanded(
@@ -328,6 +335,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                               ),
                             ],
                           ),
+                          columnPadding,
                           Row(
                             children: [
                               Expanded(
@@ -352,6 +360,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                               ),
                             ],
                           ),
+                          columnPadding,
                           Row(
                             children: [
                               Expanded(
@@ -405,6 +414,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
+                      columnPadding,
                       // Table
                       Column(
                         children: [
@@ -432,6 +442,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                               ),
                             ],
                           ),
+                          columnPadding,
                           Row(
                             children: [
                               Expanded(
@@ -444,7 +455,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                               Expanded(
                                 child: ElevatedButton(
                                   onPressed: () {},
-                                  child: const Text('Gate Closer'),
+                                  child: const Text('Gate closer'),
                                 ),
                               ),
                               rowPadding,
@@ -456,6 +467,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
                               ),
                             ],
                           ),
+                          columnPadding,
                           Row(
                             children: [
                               Expanded(

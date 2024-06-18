@@ -25,6 +25,8 @@ class RandomiserModalBottom extends StatefulWidget {
 class _RandomiserModalBottomState extends State<RandomiserModalBottom> {
   late Future<List<GameCard>> cardsFuture;
 
+  static const double minimalHeight = 300;
+
   @override
   void initState() {
     super.initState();
@@ -45,50 +47,51 @@ class _RandomiserModalBottomState extends State<RandomiserModalBottom> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        FutureBuilder(
-            future: cardsFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState != ConnectionState.done) {
-                return const SizedBox(
-                    height: 300,
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CircularProgressIndicator(),
-                          Text('Reading data...'),
-                        ],
-                      ),
-                    ));
-              }
-              if (snapshot.hasData) {
-                final cards = snapshot.data;
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
+    return ListView(shrinkWrap: true, children: [
+      FutureBuilder(
+          future: cardsFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState != ConnectionState.done) {
+              return const SizedBox(
+                  height: minimalHeight,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircularProgressIndicator(),
+                        Text('Reading data...'),
+                      ],
+                    ),
+                  ));
+            }
+            if (snapshot.hasData) {
+              final cards = snapshot.data;
+              return Container(
+                padding: const EdgeInsets.all(8),
+                constraints: const BoxConstraints(minHeight: minimalHeight),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Column(
                       children: buildCardsFromList(cards),
                     ),
-                    MaterialButton(
+                    ElevatedButton(
                         onPressed: () => setState(() {
                               cardsFuture = widget.gameDataModel.getRandomCards(
                                   widget.cardCount, widget.cardType);
                             }),
                         child: const Text('Reroll')),
                   ],
-                );
-              }
-              return const SizedBox(
-                height: 300,
-                child: Center(
-                  child: Text('Nothing to show :('),
                 ),
               );
-            }),
-      ],
-    );
+            }
+            return const SizedBox(
+              height: minimalHeight,
+              child: Center(
+                child: Text('Nothing to show :('),
+              ),
+            );
+          }),
+    ]);
   }
 }
