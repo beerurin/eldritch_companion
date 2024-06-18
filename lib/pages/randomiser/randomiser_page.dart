@@ -24,6 +24,8 @@ class _RandomiserPageState extends State<RandomiserPage> {
   bool duplicateCards = false;
 
   bool conditionMultichoice = false;
+  bool spellMultichoice = false;
+  bool uniqueAssetMultichoice = false;
   bool investigatorMultichoice = false;
 
   late GameDataModel gameDataModel;
@@ -243,9 +245,9 @@ class _RandomiserPageState extends State<RandomiserPage> {
                         children: [
                           const Text('Multichoice'),
                           Switch(
-                              value: conditionMultichoice,
+                              value: spellMultichoice,
                               onChanged: (value) =>
-                                  setState(() => conditionMultichoice = value))
+                                  setState(() => spellMultichoice = value))
                         ],
                       )
                     ],
@@ -371,9 +373,9 @@ class _RandomiserPageState extends State<RandomiserPage> {
                         children: [
                           const Text('Multichoice'),
                           Switch(
-                              value: conditionMultichoice,
-                              onChanged: (value) =>
-                                  setState(() => conditionMultichoice = value))
+                              value: uniqueAssetMultichoice,
+                              onChanged: (value) => setState(
+                                  () => uniqueAssetMultichoice = value))
                         ],
                       )
                     ],
