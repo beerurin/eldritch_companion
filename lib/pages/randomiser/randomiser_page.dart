@@ -26,6 +26,8 @@ class _RandomiserPageState extends State<RandomiserPage> {
 
   late GameDataModel gameDataModel;
 
+  static const rowPadding = SizedBox(width: 8);
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -63,13 +65,20 @@ class _RandomiserPageState extends State<RandomiserPage> {
                       color: Colors.amber,
                       shape: RoundedRectangleBorder(
                           borderRadius:
-                              BorderRadius.all(defaultCircularRadius))),
+                              BorderRadius.all(defaultCircularRadius)),
+                      shadows: [subtleShadow]),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      MaterialButton(
+                      ElevatedButton(
+                        style: const ButtonStyle(
+                            backgroundColor:
+                                WidgetStatePropertyAll(conditionColor)),
                         onPressed: () {},
-                        child: const Text('Condition'),
+                        child: const Text(
+                          'Condition',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                       // Table
                       Column(
@@ -77,19 +86,21 @@ class _RandomiserPageState extends State<RandomiserPage> {
                           Row(
                             children: [
                               Expanded(
-                                child: MaterialButton(
+                                child: ElevatedButton(
                                   onPressed: () {},
                                   child: const Text('Bane'),
                                 ),
                               ),
+                              rowPadding,
                               Expanded(
-                                child: MaterialButton(
+                                child: ElevatedButton(
                                   onPressed: () {},
                                   child: const Text('Boon'),
                                 ),
                               ),
+                              rowPadding,
                               Expanded(
-                                child: MaterialButton(
+                                child: ElevatedButton(
                                   onPressed: () {},
                                   child: const Text('Deal'),
                                 ),
@@ -99,19 +110,21 @@ class _RandomiserPageState extends State<RandomiserPage> {
                           Row(
                             children: [
                               Expanded(
-                                child: MaterialButton(
+                                child: ElevatedButton(
                                   onPressed: () {},
                                   child: const Text('Exposure'),
                                 ),
                               ),
+                              rowPadding,
                               Expanded(
-                                child: MaterialButton(
+                                child: ElevatedButton(
                                   onPressed: () {},
                                   child: const Text('Illness'),
                                 ),
                               ),
+                              rowPadding,
                               Expanded(
-                                child: MaterialButton(
+                                child: ElevatedButton(
                                   onPressed: () {},
                                   child: const Text('Injury'),
                                 ),
@@ -121,19 +134,21 @@ class _RandomiserPageState extends State<RandomiserPage> {
                           Row(
                             children: [
                               Expanded(
-                                child: MaterialButton(
+                                child: ElevatedButton(
                                   onPressed: () {},
                                   child: const Text('Madness'),
                                 ),
                               ),
+                              rowPadding,
                               Expanded(
-                                child: MaterialButton(
+                                child: ElevatedButton(
                                   onPressed: () {},
                                   child: const Text('Pursuit'),
                                 ),
                               ),
+                              rowPadding,
                               Expanded(
-                                child: MaterialButton(
+                                child: ElevatedButton(
                                   onPressed: () {},
                                   child: const Text('Restriction'),
                                 ),
@@ -143,12 +158,14 @@ class _RandomiserPageState extends State<RandomiserPage> {
                           Row(
                             children: [
                               Expanded(
-                                child: MaterialButton(
+                                child: ElevatedButton(
                                   onPressed: () {},
                                   child: const Text('Talent'),
                                 ),
                               ),
+                              rowPadding,
                               Expanded(child: Container()),
+                              rowPadding,
                               Expanded(child: Container()),
                             ],
                           ),
@@ -179,12 +196,7 @@ class _RandomiserPageState extends State<RandomiserPage> {
               decoration: const ShapeDecoration(
                   color: Colors.amber,
                   shape: defaultRoundedRectangleTop,
-                  shadows: [
-                    BoxShadow(
-                        color: Colors.black12,
-                        offset: Offset(0, 0),
-                        blurRadius: 5)
-                  ]),
+                  shadows: [subtleShadow]),
               height: 80,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

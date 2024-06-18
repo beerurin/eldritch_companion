@@ -18,3 +18,11 @@ const defaultRoundedRectangleTop = RoundedRectangleBorder(
   borderRadius: BorderRadius.only(
       topLeft: defaultCircularRadius, topRight: defaultCircularRadius),
 );
+
+// Shadows
+const subtleShadow =
+    BoxShadow(color: Colors.black12, offset: Offset(0, 0), blurRadius: 5);
+
+// Colors
+const Color conditionColor = Color.fromRGBO(111, 101, 101, 1);
+const Color conditionColorAccent = Color.fromRGBO(188, 184, 184, 1);
