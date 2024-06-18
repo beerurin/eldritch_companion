@@ -5,7 +5,6 @@ Full notice can be found at /lib/main.dart file. */
 
 import 'package:eldritch_companion/common/constants.dart';
 import 'package:eldritch_companion/pages/randomiser/randomiser_modal_bottom.dart';
-import 'package:eldritch_companion/types/cards/game_card.dart';
 import 'package:eldritch_companion/types/cards/investigator.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -91,14 +90,24 @@ class _RandomiserPageState extends State<RandomiserPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                      child: NumberPicker(
-                          axis: Axis.horizontal,
-                          itemWidth: 50,
-                          minValue: 1,
-                          maxValue: 20,
-                          value: cardsToGenerate,
-                          onChanged: (value) =>
-                              setState(() => cardsToGenerate = value))),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text('Cards'),
+                          NumberPicker(
+                              axis: Axis.horizontal,
+                              itemWidth: 50,
+                              minValue: 1,
+                              maxValue: 20,
+                              value: cardsToGenerate,
+                              onChanged: (value) =>
+                                  setState(() => cardsToGenerate = value))
+                        ]),
+                  ),
+                  const VerticalDivider(
+                    color: Colors.black54,
+                    thickness: 0.5,
+                  ),
                   Expanded(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -5,7 +5,6 @@ Full notice can be found at /lib/main.dart file. */
 
 import 'package:eldritch_companion/models/game_data_model.dart';
 import 'package:eldritch_companion/types/cards/game_card.dart';
-import 'package:eldritch_companion/types/cards/investigator.dart';
 import 'package:flutter/material.dart';
 
 class RandomiserModalBottom extends StatefulWidget {
