@@ -3,7 +3,7 @@ Copyright (C) 2024 Roman Zubin
 
 Full notice can be found at /lib/main.dart file. */
 
-import 'package:eldritch_companion/common/constants.dart';
+import 'package:eldritch_companion/common/theme.dart';
 import 'package:eldritch_companion/pages/randomiser/randomiser_modal_bottom.dart';
 import 'package:eldritch_companion/types/cards/investigator.dart';
 import 'package:flutter/material.dart';
