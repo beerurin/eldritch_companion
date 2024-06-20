@@ -11,8 +11,35 @@ part 'investigator.g.dart';
 @JsonSerializable()
 class Investigator extends GameCard {
   final String occupation;
+  final String portraitUrl;
 
-  Investigator(super.name, super.gameSet, this.occupation);
+  final int maxHealth;
+  final int maxSanity;
+
+  final List<String> roles;
+  final List<String> abilities;
+
+  final int loreSkill;
+  final int influenceSkill;
+  final int observationSkill;
+  final int strengthSkill;
+  final int willSkill;
+
+  Investigator(
+    super.name,
+    super.gameSet,
+    this.occupation,
+    this.portraitUrl,
+    this.maxHealth,
+    this.maxSanity,
+    this.roles,
+    this.abilities,
+    this.loreSkill,
+    this.influenceSkill,
+    this.observationSkill,
+    this.strengthSkill,
+    this.willSkill,
+  );
 
   factory Investigator.fromJson(Map<String, dynamic> json) =>
       _$InvestigatorFromJson(json);

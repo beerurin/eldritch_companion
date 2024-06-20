@@ -8,6 +8,7 @@ Just run in terminal with 'dart parser.dart' and it will do all the magic
 automatically. */
 
 // ignore_for_file: avoid_print
+
 import 'package:eldritch_companion/common/constants.dart';
 import 'package:args/args.dart';
 
@@ -23,11 +24,12 @@ Future<int> main(List<String> arguments) async {
   parser.addFlag('cards', abbr: 'c', help: 'Only parse cards');
   parser.addFlag('investigators',
       abbr: 'i', help: 'Only parse investigator cards');
+  parser.addFlag('debug', abbr: 'x');
 
   final argResults = parser.parse(arguments);
 
   if (argResults.wasParsed('all')) {
-    print('Parsing everything need for the app');
+    print('Parsing everything app needs');
     fetchAndWriteInvestigators();
     return 0;
   }
@@ -41,8 +43,17 @@ Future<int> main(List<String> arguments) async {
   if (argResults.wasParsed('investigators')) {
     print('Will only parse investigators');
     fetchAndWriteInvestigators();
+    return 0;
   }
 
+  if (argResults.wasParsed('debug')) {
+    print('Debug flag received!');
+    // This doesn't do anything yet
+    return 0;
+  }
+
+  print(
+      "Nothing to do.\nHelp should be printed, but I didn't impelement it yet :|");
   return 0;
 }
 
