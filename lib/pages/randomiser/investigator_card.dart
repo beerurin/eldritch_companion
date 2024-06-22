@@ -28,6 +28,8 @@ class _InvestigatorCardState extends State<InvestigatorCard> {
             CachedNetworkImage(
               imageUrl: widget.card.portraitUrl,
               placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) =>
+                  Text('Image failed to load\nError:${error.toString()}'),
             ),
             Text(
               widget.card.occupation,
