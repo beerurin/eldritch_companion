@@ -47,10 +47,35 @@ class _RandomiserModalBottomState extends State<RandomiserModalBottom> {
     }
     if (cards.isNotEmpty) {
       if (cards.runtimeType == List<Investigator>) {
+        widgets.add(const Text(
+          'Investigators',
+          style: TextStyle(fontWeight: FontWeight.w700),
+        ));
+        widgets.add(Text(
+          'Count: ${cards.length.toString()}',
+          style: const TextStyle(fontWeight: FontWeight.w300),
+        ));
         // Investigators are shown as a grid, 3 cards in 1 row
-        int rowCounter = 0;
-        for (var card in cards) {
-          widgets.add(InvestigatorCard(card: card as Investigator));
+        const int rowLength = 3;
+        int rowCount = (cards.length / rowLength).ceil();
+        int cardIndex = 0;
+        for (var i = 0; i < rowCount; i++) {
+          List<Widget> rowChildren = List.empty(growable: true);
+          for (var j = 0; j < rowLength; j++) {
+            if (cardIndex < cards.length) {
+              rowChildren.add(Expanded(
+                  child: InvestigatorCard(
+                      card: cards[cardIndex] as Investigator)));
+              cardIndex++;
+            } else {
+              rowChildren.add(Expanded(child: Container()));
+            }
+          }
+          widgets.add(Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: rowChildren,
+          ));
         }
         return widgets;
       } else {
@@ -92,7 +117,8 @@ class _RandomiserModalBottomState extends State<RandomiserModalBottom> {
                 padding: const EdgeInsets.all(8),
                 constraints: const BoxConstraints(minHeight: minimalHeight),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Column(
                       children: buildCardsFromList(cards),

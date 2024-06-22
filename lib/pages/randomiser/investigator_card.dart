@@ -19,16 +19,27 @@ class InvestigatorCard extends StatefulWidget {
 class _InvestigatorCardState extends State<InvestigatorCard> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        CachedNetworkImage(
-          imageUrl: widget.card.portraitUrl,
-          placeholder: (context, url) => const CircularProgressIndicator(),
-        ),
-        Text(widget.card.occupation),
-        Text(widget.card.name),
-      ],
-    );
+    return Container(
+        height: 200,
+        margin: const EdgeInsets.all(2),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            CachedNetworkImage(
+              imageUrl: widget.card.portraitUrl,
+              placeholder: (context, url) => const CircularProgressIndicator(),
+            ),
+            Text(
+              widget.card.occupation,
+              style: const TextStyle(
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+            Text(
+              widget.card.name,
+              style: const TextStyle(fontWeight: FontWeight.w700),
+            ),
+          ],
+        ));
   }
 }
