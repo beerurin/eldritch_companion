@@ -4,6 +4,7 @@ Copyright (C) 2024 Roman Zubin
 Full notice can be found at /lib/main.dart file. */
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:eldritch_companion/pages/card_details/investigator_details_page.dart';
 import 'package:eldritch_companion/types/cards/investigator.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,11 @@ class _InvestigatorEntryState extends State<InvestigatorEntry> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  InvestigatorDetailsPage(investigatorCard: widget.card))),
       child: Container(
           height: 200,
           margin: const EdgeInsets.all(2),

@@ -4,6 +4,7 @@ Copyright (C) 2024 Roman Zubin
 Full notice can be found at /lib/main.dart file. */
 
 import 'package:eldritch_companion/types/cards/game_card.dart';
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'investigator.g.dart';
@@ -40,6 +41,18 @@ class Investigator extends GameCard {
     this.strengthSkill,
     this.willSkill,
   );
+
+  String getRolesString() {
+    return roles.join(", ");
+  }
+
+  List<Widget> getActionsWidgets() {
+    List<Widget> widgets = List.empty(growable: true);
+    for (var ability in abilities) {
+      widgets.add(Text(ability));
+    }
+    return widgets;
+  }
 
   factory Investigator.fromJson(Map<String, dynamic> json) =>
       _$InvestigatorFromJson(json);
