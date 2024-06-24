@@ -4,7 +4,7 @@ Copyright (C) 2024 Roman Zubin
 Full notice can be found at /lib/main.dart file. */
 
 import 'package:eldritch_companion/models/game_data_model.dart';
-import 'package:eldritch_companion/pages/randomiser/investigator_card.dart';
+import 'package:eldritch_companion/pages/randomiser/investigator_entry.dart';
 import 'package:eldritch_companion/types/cards/game_card.dart';
 import 'package:eldritch_companion/types/cards/investigator.dart';
 import 'package:flutter/foundation.dart';
@@ -64,7 +64,7 @@ class _RandomiserModalBottomState extends State<RandomiserModalBottom> {
           for (var j = 0; j < rowLength; j++) {
             if (cardIndex < cards.length) {
               rowChildren.add(Expanded(
-                  child: InvestigatorCard(
+                  child: InvestigatorEntry(
                       card: cards[cardIndex] as Investigator)));
               cardIndex++;
             } else {
